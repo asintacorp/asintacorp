@@ -149,9 +149,13 @@ export default function HeroSection() {
           right={{ x: 12, y: 6.5, rotate: 0, scale: 1 }}
         />
 
-        <h1 id="hero-heading" className="mt-5 flex items-baseline gap-1.5">
+        <h1
+          id="hero-heading"
+          style={{ fontFamily: "Gothic" }}
+          className="mt-5 flex items-baseline gap-1.5"
+        >
           <motion.span
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight"
             initial={fadeUp.initial}
             animate={fadeUp.animate}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -159,7 +163,7 @@ export default function HeroSection() {
             asinta
           </motion.span>
           <motion.span
-            className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight"
+            className="text-2xl sm:text-3xl md:text-4xl tracking-tight"
             initial={fadeUp.initial}
             animate={fadeUp.animate}
             transition={{ duration: 0.5, delay: 0.18 }}
