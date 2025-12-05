@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import {
   useEffect,
   useMemo,
@@ -14,13 +13,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
-  Sun,
-  Moon,
   Menu,
   Home as HomeIcon,
-  Mail,
-  FolderGit2,
-  Wrench,
   Github,
   CircleUser,
   type LucideIcon,
@@ -34,11 +28,8 @@ type NavLink = { href: string; label: string; icon?: LucideIcon };
   Add id="home" to your top/hero section on the home page.
 */
 const links: NavLink[] = [
-  { href: "/#home", label: "Home", icon: HomeIcon },
-  { href: "/#about", label: "About", icon: CircleUser },
-  { href: "/#projects", label: "Projects", icon: FolderGit2 },
-  { href: "/stack", label: "Stack", icon: Wrench },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/", label: "Home", icon: HomeIcon },
+  { href: "/portfolio", label: "Portfolio", icon: CircleUser },
 ];
 
 /* Defer hashchange to the next frame to avoid "useInsertionEffect must not schedule updates" */
@@ -180,7 +171,6 @@ function samePath(a: string, b: string) {
 export default function SiteHeader() {
   const pathname = usePathname();
   const hash = useHash();
-  const { resolvedTheme, setTheme } = useTheme();
 
   // Ref to the island wrapper (used for click-away)
   const islandRef = useRef<HTMLDivElement>(null);
@@ -382,7 +372,7 @@ export default function SiteHeader() {
   }, [isMobileOpen]);
 
   return (
-    <header className="font-mono pointer-events-none fixed inset-x-0 top-3 z-50 sm:top-4 md:top-6">
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 sm:top-4 md:top-6">
       <div className="mx-auto w-full max-w-3xl px-3 sm:px-4 pointer-events-auto">
         {/* Backdrop that closes the menu when tapping outside (mobile only) */}
         {isMobileOpen && (
@@ -465,22 +455,7 @@ export default function SiteHeader() {
               })}
             </nav>
 
-            {/* Theme toggle */}
-            <div className="ml-auto">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-xl bg-background text-foreground border border-border shadow-sm hover:bg-muted/60"
-                onClick={() =>
-                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
-                }
-                aria-label="Toggle theme"
-              >
-                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            </div>
+            <div className="ml-auto" />
           </div>
 
           {/* Collapsible island content (mobile) */}

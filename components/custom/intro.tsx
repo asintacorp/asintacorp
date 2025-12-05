@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const container = "mx-auto max-w-5xl px-4 sm:px-6 lg:px-8";
-const sectionHeading =
-  "text-center text-2xl md:text-3xl font-semibold tracking-tight";
-const sectionLead =
-  "space-y-4 text-sm md:text-base leading-relaxed text-muted-foreground";
-const subHeading = "text-xl md:text-2xl font-semibold";
+import {
+  container,
+  sectionHeading,
+  sectionLead,
+  subHeading,
+} from "@/components/custom/typography";
 const imageSquare =
   "overflow-hidden relative w-full pb-[100%] md:pb-0 md:h-1/2";
 
