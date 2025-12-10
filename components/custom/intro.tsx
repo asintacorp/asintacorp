@@ -4,7 +4,6 @@ import {
   container,
   sectionHeading,
   sectionLead,
-  subHeading,
 } from "@/components/custom/typography";
 const imageSquare =
   "overflow-hidden relative w-full pb-[100%] md:pb-0 md:h-1/2";
@@ -51,8 +50,7 @@ export default function AboutIntro({
           <p>
             <Link
               href="#"
-              className="font-semibold underline underline-offset-2"
-            >
+              className="font-semibold underline underline-offset-2">
               Asinta
             </Link>{" "}
             Architects is a design &amp; build firm founded through the
@@ -97,7 +95,7 @@ export default function AboutIntro({
           </div>
 
           <div className="space-y-3">
-            <h2 className={subHeading}>Our Company History</h2>
+            <h2 className={sectionHeading}>Our Company History</h2>
             <div className={"space-y-3 " + sectionLead}>
               <p>
                 Founded in 2023 by Ar.{" "}

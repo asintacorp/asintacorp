@@ -3,7 +3,6 @@ import Image from "next/image";
 import {
   container,
   sectionHeading,
-  subHeading,
   sectionLead,
 } from "@/components/custom/typography";
 
@@ -118,7 +117,7 @@ export default function ServicesCore() {
         </div>
 
         <div className="pt-6">
-          <h3 className={subHeading}>Our Core Values</h3>
+          <h3 className={sectionHeading}>Our Core Values</h3>
 
           <div className={"mt-3 " + sectionLead}>
             <p>
@@ -133,8 +132,7 @@ export default function ServicesCore() {
             {coreValues.map(({ letter, label, description }, index) => (
               <div
                 key={letter + label + index}
-                className="group relative pl-14 border-l border-border hover:border-foreground transition-colors"
-              >
+                className="group relative pl-14 border-l border-border hover:border-foreground transition-colors">
                 <span className="absolute left-4 top-0 text-3xl font-bold text-foreground/40 group-hover:text-foreground/70 transition-colors">
                   {letter}
                 </span>

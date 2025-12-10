@@ -86,12 +86,12 @@ export default function FoundersSection() {
           </div>
         </div>
 
-        {/* --- AR. REI VIVIENE ALODVINO-BUYAGON --- */}
+        {/* --- AR. REI VIVIENE ALDOVINO-BUYAGON --- */}
         <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-6 items-start">
           {/* Left: Content */}
           <div className="order-2 md:order-1 space-y-4">
             <div>
-              <h3 className={nameHeading}>AR. REI VIVIENE ALODVINO-BUYAGON</h3>
+              <h3 className={nameHeading}>AR. REI VIVIENE ALDOVINO-BUYAGON</h3>
               <p className={roleHeading}>
                 Co-founder / Design Director &amp; Client Lead
               </p>

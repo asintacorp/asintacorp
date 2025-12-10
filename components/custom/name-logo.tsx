@@ -1,13 +1,11 @@
 import Image from "next/image";
-
-const container = "mx-auto max-w-5xl px-4 sm:px-6 lg:px-8";
-const sectionPadding = "pt-20 md:pt-24 pb-12";
-const sectionHeading =
-  "text-center text-2xl md:text-3xl font-semibold tracking-tight";
-const sectionLead =
-  "space-y-4 text-sm md:text-base leading-relaxed text-muted-foreground";
+import {
+  container,
+  sectionPadding,
+  sectionHeading,
+  sectionLead,
+} from "@/components/custom/typography";
 const coverImageWrap = "mt-12 w-full overflow-hidden shadow-lg";
-const subHeading = "text-xl md:text-2xl font-semibold";
 
 export default function NameAndLogo() {
   return (
@@ -59,7 +57,7 @@ export default function NameAndLogo() {
 
       {/* Vision & Mission placed just below the cover image */}
       <div className="mt-10 space-y-6">
-        <h2 className={subHeading}>Our Vision & Mission</h2>
+        <h2 className={sectionHeading}>Our Vision & Mission</h2>
         <p className="text-base text-muted-foreground">
           Our mission is to create architecture that is thoughtfully designed
           around the people who will inhabit it — reflecting their personal

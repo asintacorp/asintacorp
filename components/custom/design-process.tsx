@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   container,
   sectionPadding,
@@ -31,10 +35,18 @@ export default function DesignProcess({
         </div>
 
         {/* Right content */}
-        <div className="space-y-6">
+        <div className="space-y-2">
           <h2 className={sectionHeading}>
             Our Design &amp; Construction Strategy
           </h2>
+
+          {/* Our Process placed directly under the main heading (smaller) */}
+          <div className="mt-3 mb-3 flex items-center justify-center gap-2">
+            <h3 className={`${subHeading} mt-0 mb-0 inline-block`}>
+              Our Process:
+            </h3>
+            <ProcessCycler small />
+          </div>
 
           <div className={"space-y-4 " + sectionLead}>
             <p>
@@ -67,30 +79,45 @@ export default function DesignProcess({
             </p>
           </div>
 
-          <div>
-            <h3 className="mt-4 mb-2 font-semibold text-base">Our Process</h3>
-
-            <div className="mt-4 relative">
-              <div className="absolute left-0 right-0 top-1/2 h-px bg-muted/30" />
-
-              <div className="relative z-10 flex flex-wrap items-center justify-center sm:justify-between gap-4 md:gap-6 lg:gap-8">
-                {["RESEARCH", "DESIGN", "FINALIZE", "APPLICATION"].map(
-                  (label) => (
-                    <div
-                      key={label}
-                      className="flex flex-col items-center gap-2"
-                    >
-                      <div className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-28 lg:w-28 xl:h-32 xl:w-32 rounded-full border-2 border-foreground flex items-center justify-center text-[10px] sm:text-[11px] md:text-[12px] lg:text-[14px] xl:text-[16px] font-semibold tracking-widest text-center px-2 leading-none whitespace-normal wrap-break-word">
-                        <span className="block leading-none">{label}</span>
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-          </div>
+          {/* bottom duplicated Our Process removed; kept the inline smaller version above */}
         </div>
       </div>
     </section>
+  );
+}
+
+function ProcessCycler({ small }: { small?: boolean } = {}) {
+  const EASE = [0.22, 1, 0.36, 1] as const;
+  const steps = ["RESEARCH", "DESIGN", "FINALIZE", "APPLICATION"];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % steps.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [steps.length]);
+
+  return (
+    <div className="relative flex items-center">
+      {!small && <div className="h-px w-12 bg-muted/30 mr-4 hidden sm:block" />}
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          aria-live="polite"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.45, ease: EASE }}
+          className={`${subHeading} inline-flex items-center justify-center italic ${
+            small ? "px-1 w-[12ch] text-left" : "px-1 w-40 sm:w-48 md:w-56"
+          } text-center font-bold text-black tracking-normal`}
+          style={{ willChange: "transform, opacity" }}>
+          {steps[index]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }
