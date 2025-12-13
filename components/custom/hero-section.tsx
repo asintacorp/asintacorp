@@ -56,16 +56,14 @@ function AnimatedPhrase({
       variants={container}
       initial="hidden"
       animate="show"
-      aria-label={text}
-    >
+      aria-label={text}>
       {words.map((w, i) => (
         <motion.span
           key={`${w}-${i}`}
           variants={child}
           transition={{ duration: 0.4, ease: EASE }}
           className="inline-block mr-[0.5ch]"
-          style={{ willChange: "filter, transform, opacity" }}
-        >
+          style={{ willChange: "filter, transform, opacity" }}>
           {w}
         </motion.span>
       ))}
@@ -91,8 +89,7 @@ function LogoMark({
         initial={{ opacity: 0, y: -24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: EASE }}
-        style={{ willChange: "opacity, transform" }}
-      >
+        style={{ willChange: "opacity, transform" }}>
         <motion.div
           className="relative w-full h-full"
           style={{
@@ -101,8 +98,7 @@ function LogoMark({
           }}
           initial={{ filter: "blur(6px)" }}
           animate={{ filter: "blur(0px)" }}
-          transition={{ duration: 0.6, ease: EASE }}
-        >
+          transition={{ duration: 0.6, ease: EASE }}>
           <Image
             src={leftSrc}
             alt=""
@@ -120,8 +116,7 @@ function LogoMark({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-        style={{ willChange: "opacity, transform" }}
-      >
+        style={{ willChange: "opacity, transform" }}>
         <motion.div
           className="relative w-full h-full"
           style={{
@@ -130,8 +125,7 @@ function LogoMark({
           }}
           initial={{ filter: "blur(6px)" }}
           animate={{ filter: "blur(0px)" }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-        >
+          transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}>
           <Image
             src={rightSrc}
             alt=""
@@ -163,8 +157,7 @@ export default function HeroSection() {
     <section
       // Stable viewport on mobile (no jump when browser UI hides)
       className="relative w-full pb-20 h-[100svh] md:h-[100dvh] grid place-items-center overflow-hidden"
-      aria-labelledby="hero-heading"
-    >
+      aria-labelledby="hero-heading">
       <div className="flex flex-col items-center text-center w-full">
         {/* Logo: enter centered, then shift up to make space */}
         <motion.div
@@ -175,13 +168,11 @@ export default function HeroSection() {
             times: [0, 0.55, 1],
             ease: EASE,
           }}
-          className="will-change-transform"
-        >
+          className="will-change-transform">
           {/* Centered frame to compensate for right-side bleed */}
           <div
             className="relative mx-auto"
-            style={{ width: logoW + bleedX * 2, height: logoH }}
-          >
+            style={{ width: logoW + bleedX * 2, height: logoH }}>
             <div className="absolute inset-0 grid place-items-center">
               <LogoMark
                 width={logoW}
@@ -200,16 +191,14 @@ export default function HeroSection() {
           className="mt-5 flex items-baseline gap-0.2"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2, ease: EASE }}
-        >
+          transition={{ duration: 0.6, delay: 1.2, ease: EASE }}>
           <motion.span
             className="text-2xl sm:text-3xl md:text-4xl tracking-tight"
             style={{ fontWeight: 950 }}
             initial={{ opacity: 0, y: 12, filter: "blur(2px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.5, delay: 1.25, ease: EASE }}
-            aria-label="asinta"
-          >
+            aria-label="asinta">
             <span style={{ willChange: "filter, transform, opacity" }}>
               asinta
             </span>
@@ -219,8 +208,7 @@ export default function HeroSection() {
             className="text-2xl sm:text-3xl md:text-4xl tracking-tight"
             initial={{ opacity: 0, y: 12, filter: "blur(2px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.5, delay: 1.33, ease: EASE }}
-          >
+            transition={{ duration: 0.5, delay: 1.33, ease: EASE }}>
             <span style={{ willChange: "filter, transform, opacity" }}>
               architects
             </span>
@@ -231,8 +219,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.45, ease: EASE }}
-        >
+          transition={{ duration: 0.6, delay: 1.45, ease: EASE }}>
           <AnimatedPhrase
             text="architecture curated to your style."
             delay={0.15}
@@ -245,12 +232,11 @@ export default function HeroSection() {
         aria-hidden="true"
         className="pointer-events-none fixed bottom-0 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center text-center text-muted-foreground text-xs sm:text-sm select-none"
         style={{
-          paddingBottom: "max(env(safe-area-inset-bottom), 1.25rem)",
+          paddingBottom: "max(env(safe-area-inset-bottom), 5.5rem)",
         }}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.6, ease: EASE }}
-      >
+        transition={{ duration: 0.6, delay: 1.6, ease: EASE }}>
         <motion.div style={{ opacity: hintOpacity, y: hintY }}>
           <motion.span
             className="mb-2 tracking-widest uppercase"
@@ -259,8 +245,7 @@ export default function HeroSection() {
               duration: 2.0,
               repeat: Infinity,
               ease: "easeInOut",
-            }}
-          >
+            }}>
             Scroll Down
           </motion.span>
 
@@ -273,8 +258,7 @@ export default function HeroSection() {
               repeatType: "mirror",
               ease: "easeInOut",
             }}
-            style={{ willChange: "transform" }}
-          >
+            style={{ willChange: "transform" }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -284,8 +268,7 @@ export default function HeroSection() {
               stroke="currentColor"
               strokeWidth={1.6}
               className="opacity-70 block mx-auto"
-              aria-hidden="true"
-            >
+              aria-hidden="true">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

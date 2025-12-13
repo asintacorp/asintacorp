@@ -1,5 +1,20 @@
 import Image from "next/image";
 import {
+  Calendar,
+  Eye,
+  Wrench,
+  Package,
+  DollarSign,
+  Users,
+  Archive,
+  PenTool,
+  Mail,
+  Layers,
+  FileText,
+  Clipboard,
+  ShieldCheck,
+} from "lucide-react";
+import {
   container,
   sectionPadding,
   sectionHeading,
@@ -17,18 +32,18 @@ export default function FoundersSection() {
         {/* Section heading */}
         <header className="space-y-2">
           <h2 className={sectionHeading}>Our Founders</h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
+          <p className="mx-auto text-center text-sm md:text-base text-muted-foreground max-w-xl">
             Meet the architects behind Asinta Corp., leading the firm&apos;s
             design, client relations, and project execution.
           </p>
         </header>
 
         {/* --- AR. JUNEL D. BUYAGON --- */}
-        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6 items-stretch">
           {/* Left: Image */}
-          <div className="flex justify-start md:justify-center">
-            <div className="w-full md:w-[220px]">
-              <div className="relative w-full pb-[133%] md:pb-[135%]">
+          <div className="flex justify-center md:justify-center items-start md:items-stretch">
+            <div className="w-full md:w-[220px] md:h-full max-w-[220px] mx-auto md:mx-0">
+              <div className="relative w-full pb-[120%] md:pb-0 md:h-full">
                 <Image
                   src="/img/junel.webp"
                   alt="Ar. Junel D. Buyagon"
@@ -73,21 +88,42 @@ export default function FoundersSection() {
                 firm&apos;s design and build projects.
               </p>
             </div>
-
+            <hr />
             <ul className="mt-2 grid gap-1 text-sm md:text-base text-muted-foreground sm:grid-cols-2">
-              <li>• Project Management &amp; Scheduling</li>
-              <li>• Quality Monitoring</li>
-              <li>• Construction Supervision</li>
-              <li>• Materials &amp; Procurement</li>
-              <li>• Financial Management</li>
-              <li>• Contractor &amp; Supplier Coordination</li>
-              <li>• Back-End Operations (document control, archiving)</li>
+              <li className="flex items-center gap-2">
+                <Calendar className="h-4 w-4 shrink-0" />
+                <span>Project Management &amp; Scheduling</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Eye className="h-4 w-4 shrink-0" />
+                <span>Quality Monitoring</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Wrench className="h-4 w-4 shrink-0" />
+                <span>Construction Supervision</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Package className="h-4 w-4 shrink-0" />
+                <span>Materials &amp; Procurement</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <DollarSign className="h-4 w-4 shrink-0" />
+                <span>Financial Management</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Users className="h-4 w-4 shrink-0" />
+                <span>Contractor &amp; Supplier Coordination</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Archive className="h-4 w-4 shrink-0" />
+                <span>Back-End Operations (document control, archiving)</span>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* --- AR. REI VIVIENE ALDOVINO-BUYAGON --- */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-6 items-stretch">
           {/* Left: Content */}
           <div className="order-2 md:order-1 space-y-4">
             <div>
@@ -120,22 +156,43 @@ export default function FoundersSection() {
                 to translate ideas into purposeful and enduring architecture.
               </p>
             </div>
-
+            <hr />
             <ul className="mt-2 grid gap-1 text-sm md:text-base text-muted-foreground sm:grid-cols-2">
-              <li>• Design Development &amp; Creative Direction</li>
-              <li>• Client Communications &amp; Updates</li>
-              <li>• Interior Design &amp; Material Curation</li>
-              <li>• Proposal Writing &amp; Bid Packaging</li>
-              <li>• Permit Application Oversight</li>
-              <li>• Contracts &amp; Legal Compliance</li>
-              <li>• Office &amp; Staff Management</li>
+              <li className="flex items-center gap-2">
+                <PenTool className="h-4 w-4 shrink-0" />
+                <span>Design Development &amp; Creative Direction</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0" />
+                <span>Client Communications &amp; Updates</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Layers className="h-4 w-4 shrink-0" />
+                <span>Interior Design &amp; Material Curation</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <FileText className="h-4 w-4 shrink-0" />
+                <span>Proposal Writing &amp; Bid Packaging</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Clipboard className="h-4 w-4 shrink-0" />
+                <span>Permit Application Oversight</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 shrink-0" />
+                <span>Contracts &amp; Legal Compliance</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Users className="h-4 w-4 shrink-0" />
+                <span>Office &amp; Staff Management</span>
+              </li>
             </ul>
           </div>
 
           {/* Right: Image */}
-          <div className="order-1 md:order-2 flex justify-start md:justify-center">
-            <div className="w-full md:w-[220px]">
-              <div className="relative w-full pb-[133%] md:pb-[135%]">
+          <div className="order-1 md:order-2 flex justify-center md:justify-center items-start md:items-stretch">
+            <div className="w-full md:w-[220px] md:h-full max-w-[220px] mx-auto md:mx-0">
+              <div className="relative w-full pb-[120%] md:pb-0 md:h-full">
                 <Image
                   src="/img/viv.webp"
                   alt="Ar. Rei Viviene Aldovino-Buyagon"

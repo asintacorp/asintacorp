@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import {
@@ -15,8 +16,9 @@ import { Separator } from "@/components/ui/separator";
 import {
   Menu,
   Home as HomeIcon,
-  Github,
-  CircleUser,
+  Facebook,
+  Mail,
+  FolderOpen,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,7 +31,8 @@ type NavLink = { href: string; label: string; icon?: LucideIcon };
 */
 const links: NavLink[] = [
   { href: "/", label: "Home", icon: HomeIcon },
-  { href: "/portfolio", label: "Portfolio", icon: CircleUser },
+  { href: "/portfolio", label: "Portfolio", icon: FolderOpen },
+  { href: "/contact", label: "Contact", icon: Mail },
 ];
 
 /* Defer hashchange to the next frame to avoid "useInsertionEffect must not schedule updates" */
@@ -393,8 +396,7 @@ export default function SiteHeader() {
             scrolled ? "shadow-lg" : "shadow-sm",
             isMobileOpen ? "rounded-2xl" : "rounded-[18px]",
             "w-full",
-          ].join(" ")}
-        >
+          ].join(" ")}>
           {/* Top bar row */}
           <div className="flex h-12 items-center gap-2 px-2 pl-3 pr-2">
             {/* Mobile toggle */}
@@ -404,17 +406,27 @@ export default function SiteHeader() {
                 size="icon"
                 aria-expanded={isMobileOpen}
                 aria-controls="island-mobile-nav"
-                onClick={() => setMobileOpen((v) => !v)}
-              >
+                onClick={() => setMobileOpen((v) => !v)}>
                 <Menu className="h-5 w-5" />
               </Button>
             </div>
 
-            {/* Logo removed per request */}
+            <Link
+              href="/"
+              aria-label="Home"
+              className="flex items-center gap-2">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={18}
+                height={18}
+                priority={true}
+              />
+            </Link>
 
             {/* Desktop nav */}
             <nav className="mx-2 hidden md:flex flex-1 items-center justify-center gap-3">
-              {links.map(({ href, label }) => {
+              {links.map(({ href, label, icon: Icon }) => {
                 const active = isActive(href);
                 return (
                   <Link
@@ -428,8 +440,7 @@ export default function SiteHeader() {
                       active
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/60",
-                    ].join(" ")}
-                  >
+                    ].join(" ")}>
                     {active && (
                       <motion.span
                         layoutId="nav-active-pill"
@@ -449,7 +460,10 @@ export default function SiteHeader() {
                         }}
                       />
                     )}
-                    <span className="relative z-10">{label}</span>
+                    <span className="relative z-10 flex items-center gap-2">
+                      {Icon ? <Icon className="h-4 w-4" /> : null}
+                      {label}
+                    </span>
                   </Link>
                 );
               })}
@@ -466,8 +480,7 @@ export default function SiteHeader() {
               maxHeight: isMobileOpen ? contentH : 0,
               opacity: isMobileOpen ? 1 : 0,
             }}
-            aria-hidden={!isMobileOpen}
-          >
+            aria-hidden={!isMobileOpen}>
             <div ref={contentRef}>
               <Separator />
               <nav className="px-2 py-2">
@@ -486,8 +499,7 @@ export default function SiteHeader() {
                         active
                           ? "bg-muted text-foreground"
                           : "text-muted-foreground hover:text-foreground hover:bg-muted/60",
-                      ].join(" ")}
-                    >
+                      ].join(" ")}>
                       {Icon ? <Icon className="h-4 w-4" /> : null}
                       {label}
                     </Link>
@@ -500,12 +512,11 @@ export default function SiteHeader() {
               <div className="px-4 pb-3">
                 <Button asChild variant="outline" className="w-full gap-2">
                   <Link
-                    href="https://github.com/"
+                    href="https://www.facebook.com/asintarchs/"
                     target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Github className="h-4 w-4" />
-                    GitHub
+                    rel="noreferrer">
+                    <Facebook className="h-4 w-4" />
+                    Facebook
                   </Link>
                 </Button>
               </div>
