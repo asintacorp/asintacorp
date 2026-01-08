@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Portfolio() {
   return (
-    <section className="h-[100dvh] overflow-hidden bg-white text-neutral-700 pt-16 sm:pt-20">
+    <section className="h-dvh overflow-hidden bg-white text-neutral-700 pt-16 sm:pt-20">
       <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="shrink-0 pt-6 sm:pt-8">
