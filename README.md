@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Asinta Corp
 
-## Getting Started
+![Asinta Banner](https://via.placeholder.com/1200x300?text=Asinta+Architects+%7C+Design+%26+Build)
 
-First, run the development server:
+<!-- Replace the link above with your actual banner image URL -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> **Contemporary Architectural Solutions & Construction Excellence**  
+> _Innovating spaces that are functional, contextually relevant, and deeply personal._<!--citation:1-->
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏠 About Us
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Asinta Corp** (Asinta Architects) is a premier design and build firm committed to delivering architectural solutions that bridge creativity with practical execution.<!--citation:1--> Founded on the principles of **firmitas** (strength), **utilitas** (utility), and **venustas** (beauty), we create spaces that reflect the unique lifestyle and aspirations of our clients.
 
-## Learn More
+The name _"Asinta"_ draws from the vernacular term for "masonry wall"—symbolizing the strong foundation and precision we bring to every project.<!--citation:1-->
 
-To learn more about Next.js, take a look at the following resources:
+### Our Vision
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To be a leading name in the industry, known for authenticity, precision, and unwavering design integrity.<!--citation:1--> We curate architecture that is thoughtfully designed around the people who inhabit it.<!--citation:1-->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Services<!--citation:1-->
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+We offer comprehensive services integrating craftsmanship into every stage of the project:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Architectural Design:** Custom residential and commercial planning tailored to your ideology.
+- **Design & Build:** End-to-end project management from concept to turnover.
+- **Renovation & Restoration:** Breathing new life into existing structures.
+- **Interior Fit-outs:** detailed interior remodeling and space planning.
+- **Project Consultation:** Expert guidance on construction strategy and feasibility.
+
+---
+
+## 🌟 Core Philosophy
+
+- **Client-Centric:** We believe every design begins with a deep understanding of the client's values.<!--citation:1-->
+- **Collaboration:** Rooted in adaptability, we evolve alongside industry innovations.<!--citation:1-->
+- **Precision:** We balance design creativity with construction excellence.<!--citation:1-->
+
+---
+
+## 📬 Contact Us
+
+Ready to build your vision? Connect with us:
+
+- **Website:** [www.asintacorp.com](http://www.asintacorp.com)
+- **Email:** [asinta.corp@gmail.com](mailto:asinta.corp@gmail.com)
+- **Socials:** [Facebook](https://www.facebook.com/asintarchs) | [Instagram](https://www.instagram.com/asintarchs)<!--citation:1-->
+
+---
+
+_© 2025 Asinta Corp. All Rights Reserved._

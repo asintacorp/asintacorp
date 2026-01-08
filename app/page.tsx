@@ -1,4 +1,3 @@
-import SiteHeader from "@/components/custom/navbar";
 import HeroSection from "@/components/custom/hero-section";
 import CompanyProfile from "@/components/custom/profile";
 import AboutIntro from "@/components/custom/intro";
@@ -11,7 +10,6 @@ import FoundersSection from "@/components/custom/archis";
 export default function HomePage() {
   return (
     <main>
-      <SiteHeader />
       <HeroSection />
       <CompanyProfile />
       <AboutIntro />
