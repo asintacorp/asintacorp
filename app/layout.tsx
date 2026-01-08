@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/custom/navbar";
+import Footer from "@/components/custom/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Asinta Corp.",
     description,
-    url: "https://asintacorp.vercel.app",
+    url: "https://asintacorp.com",
     siteName: "Asinta Corp.",
     images: [
       {
-        url: "https://asintacorp.vercel.app/img/og_cover.webp",
+        url: "https://asintacorp.com/img/og_cover.webp",
         width: 1200,
         height: 630,
         alt: "Asinta Corp. Open Graph Image",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Asinta Corp.",
     description,
-    images: ["https://asintacorp.vercel.app/img/og_cover.webp"],
+    images: ["https://asintacorp.com/img/og_cover.webp"],
   },
 };
 
@@ -57,6 +58,7 @@ export default function RootLayout({
       >
         <SiteHeader />
         {children}
+        <Footer />
       </body>
     </html>
   );
