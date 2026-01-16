@@ -32,7 +32,7 @@ type NavLink = { href: string; label: string; icon?: LucideIcon };
 const links: NavLink[] = [
   { href: "/", label: "Home", icon: HomeIcon },
   { href: "/portfolio", label: "Portfolio", icon: FolderOpen },
-  { href: "/contact", label: "Contact", icon: Mail },
+  // { href: "/contact", label: "Contact", icon: Mail },
 ];
 
 /* Defer hashchange to the next frame to avoid "useInsertionEffect must not schedule updates" */
