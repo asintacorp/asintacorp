@@ -90,7 +90,7 @@ function SectionWall({
               </p>
 
               <div className="mt-7 text-[11px] tracking-[0.22em] text-neutral-500 tabular-nums">
-                {projects.length} IMAGES
+                {projects.length} SHEETS • A4 ASPECT
               </div>
             </div>
           </div>
@@ -179,21 +179,66 @@ function SectionWall({
 
 export default function Portfolio() {
   const reduceMotion = !!useReducedMotion();
-
-  const year = useMemo(() => String(new Date().getUTCFullYear()), []);
   const finePointerHover = useMediaQuery("(hover: hover) and (pointer: fine)");
   const enableClipReveal = !reduceMotion && finePointerHover;
+
+  // Automatic year (UTC)
+  const year = useMemo(() => String(new Date().getUTCFullYear()), []);
+
+  // ---- Cover image: wait until decoded, then animate (prevents flick/zoom jump) ----
+  const [coverReady, setCoverReady] = useState(false);
+
+  const handleCoverReady = useCallback((img: HTMLImageElement) => {
+    const done = () => setCoverReady(true);
+
+    // decode() prevents "paint -> resize -> flick" on some devices
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const anyImg = img as any;
+    if (anyImg?.decode) {
+      anyImg.decode().then(done).catch(done);
+    } else {
+      done();
+    }
+  }, []);
+
+  const coverInitial = useMemo(() => {
+    if (reduceMotion) return { opacity: 0 };
+    if (enableClipReveal)
+      return { opacity: 0, clipPath: "circle(8% at 50% 45%)" };
+    return { opacity: 0, y: 10, scale: 0.99 };
+  }, [reduceMotion, enableClipReveal]);
+
+  const coverAnimate = useMemo(() => {
+    if (reduceMotion) return { opacity: 1 };
+    if (enableClipReveal) {
+      return {
+        opacity: 1,
+        clipPath: "circle(140% at 50% 45%)",
+        transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+      };
+    }
+    return {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+    };
+  }, [reduceMotion, enableClipReveal]);
+
+  // Inline initial paint styles (helps avoid a single-frame flash)
+  const coverInitialPaintStyle = useMemo(() => {
+    if (reduceMotion) return { opacity: 0 };
+    if (enableClipReveal)
+      return { opacity: 0, clipPath: "circle(8% at 50% 45%)" };
+    return { opacity: 0, transform: "translateY(10px) scale(0.99)" };
+  }, [reduceMotion, enableClipReveal]);
 
   const imageWillChange = enableClipReveal
     ? "clip-path, opacity"
     : "transform, opacity";
 
-  const imageWrapperInitialInline = enableClipReveal
-    ? { opacity: 0, clipPath: "circle(8% at 50% 45%)" as const }
-    : { opacity: 0, transform: "translateY(10px) scale(0.99)" };
-
-  // Your real images: public/portfolio/1.webp ... 19.webp
-  // Grouping (as provided)
+  // Real images in /public/portfolio: 1.webp ... 19.webp
+  // Grouping (as provided) — note: 9 appears in both lists, so it will show in both sections.
   const exteriorNos = useMemo(
     () => [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 15, 18],
     []
@@ -202,7 +247,7 @@ export default function Portfolio() {
 
   const { exteriorProjects, interiorProjects, allProjects } = useMemo(() => {
     const makeProject = (section: ProjectSection, n: number): Project => ({
-      id: `${section.toLowerCase()}-${String(n).padStart(2, "0")}`, // unique per section
+      id: `${section.toLowerCase()}-${String(n).padStart(2, "0")}`,
       imageNo: n,
       title: `${section} ${String(n).padStart(2, "0")}`,
       section,
@@ -219,7 +264,7 @@ export default function Portfolio() {
     };
   }, [exteriorNos, interiorNos]);
 
-  // Lightbox
+  // ---- Lightbox ----
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const activeIndex = useMemo(() => {
@@ -280,6 +325,7 @@ export default function Portfolio() {
         }}
         style={{ willChange: "transform" }}>
         <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
+          {/* Header */}
           <div className="shrink-0 pt-6 sm:pt-8">
             <motion.h1
               variants={{
@@ -357,6 +403,7 @@ export default function Portfolio() {
                 <div className="tracking-normal">asinta architects</div>
               </div>
 
+              {/* 3D “flip-in” year */}
               <div
                 className="sm:text-right text-sm font-semibold text-neutral-800 tracking-[0.35em] sm:tracking-[0.5em]"
                 style={{ perspective: 900 }}>
@@ -397,52 +444,24 @@ export default function Portfolio() {
             </motion.div>
           </div>
 
-          {/* Cover image */}
+          {/* Cover image area (hidden until decoded, then animates) */}
           <div className="relative flex-1 min-h-0 pb-6 sm:pb-8 flex items-center justify-center">
             <motion.div
               className="relative w-full max-w-245 h-[clamp(260px,52svh,640px)] sm:h-[clamp(340px,56svh,720px)]"
-              initial={
-                reduceMotion
-                  ? { opacity: 1 }
-                  : enableClipReveal
-                  ? { opacity: 0, clipPath: "circle(8% at 50% 45%)" }
-                  : { opacity: 0, y: 10, scale: 0.99 }
-              }
-              animate={
-                reduceMotion
-                  ? { opacity: 1 }
-                  : enableClipReveal
-                  ? {
-                      opacity: 1,
-                      clipPath: "circle(140% at 50% 45%)",
-                      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-                    }
-                  : {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
-                    }
-              }
+              initial={coverInitial}
+              animate={coverReady ? coverAnimate : coverInitial}
               style={{
-                ...imageWrapperInitialInline,
+                ...coverInitialPaintStyle,
                 willChange: imageWillChange,
                 contain: "paint",
                 backfaceVisibility: "hidden",
               }}>
               <motion.div
                 className="absolute inset-0"
-                initial={
-                  reduceMotion ? { y: 0, scale: 1 } : { y: 6, scale: 0.995 }
-                }
+                initial={false}
                 animate={{ y: 0, scale: 1 }}
-                transition={
-                  reduceMotion
-                    ? undefined
-                    : { delay: 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-                }
                 whileHover={
-                  finePointerHover && !reduceMotion
+                  coverReady && finePointerHover && !reduceMotion
                     ? { scale: 1.01 }
                     : undefined
                 }
@@ -457,6 +476,8 @@ export default function Portfolio() {
                   priority
                   className="object-contain"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 980px"
+                  onLoadingComplete={handleCoverReady}
+                  onError={() => setCoverReady(true)}
                 />
               </motion.div>
             </motion.div>
@@ -512,7 +533,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* LIGHTBOX (smaller A4 preview + fixed controls + next/back) */}
+      {/* LIGHTBOX (A4 preview + fixed controls + next/back) */}
       <AnimatePresence>
         {activeProject && (
           <motion.div
@@ -531,7 +552,7 @@ export default function Portfolio() {
               onClick={closeProject}
             />
 
-            {/* fixed controls */}
+            {/* fixed controls (never covered) */}
             <button
               type="button"
               onClick={closeProject}
