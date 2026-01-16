@@ -90,12 +90,12 @@ function SectionWall({
               </p>
 
               <div className="mt-7 text-[11px] tracking-[0.22em] text-neutral-500 tabular-nums">
-                {projects.length} SHEETS • A4 ASPECT
+                {projects.length} IMAGES
               </div>
             </div>
           </div>
 
-          {/* Right wall (clamped width so tablet doesn’t become huge) */}
+          {/* Right wall */}
           <div className="w-full max-w-[980px] mx-auto lg:mx-0 rounded-3xl border border-neutral-200 bg-white shadow-[0_25px_70px_rgba(17,24,39,0.08)] overflow-hidden">
             {/* hanging rail */}
             <div className="relative h-12 border-b border-neutral-200/80 bg-white">
@@ -105,10 +105,7 @@ function SectionWall({
               <div className="absolute right-6 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-neutral-200" />
             </div>
 
-            {/* Columns:
-                - Mobile: 2
-                - Tablet (md): 3 (prevents tiles getting too big)
-                - Desktop (lg): 2 (easy to view) */}
+            {/* Mobile: 2 cols, Tablet(md): 3 cols, Desktop(lg): 2 cols */}
             <motion.ul
               className="p-4 sm:p-6 lg:p-7 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-5 sm:gap-6"
               initial="hidden"
@@ -489,6 +486,32 @@ export default function Portfolio() {
         finePointerHover={finePointerHover}
       />
 
+      {/* FINAL MESSAGE */}
+      <section className="border-t border-neutral-200 bg-white">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="max-w-3xl">
+            <div className="text-[11px] tracking-[0.32em] text-neutral-500">
+              ASINTA ARCHITECTS
+            </div>
+
+            <h4 className="mt-3 text-2xl sm:text-3xl font-light tracking-tight text-neutral-900">
+              Architecture curated to your style — built with quality and
+              precision.
+            </h4>
+
+            <p className="mt-5 text-sm sm:text-base leading-7 text-neutral-600">
+              A partnership founded on purpose and craftsmanship, Asinta
+              Architects creates spaces that reflect individuality, embody
+              integrity, and endure through thoughtful design and execution.
+            </p>
+
+            <div className="mt-8 text-[11px] tracking-[0.22em] text-neutral-500">
+              © {year} asinta architects
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LIGHTBOX (smaller A4 preview + fixed controls + next/back) */}
       <AnimatePresence>
         {activeProject && (
@@ -508,7 +531,7 @@ export default function Portfolio() {
               onClick={closeProject}
             />
 
-            {/* fixed controls (never covered) */}
+            {/* fixed controls */}
             <button
               type="button"
               onClick={closeProject}
@@ -533,7 +556,7 @@ export default function Portfolio() {
               <span className="text-xl leading-none">›</span>
             </button>
 
-            {/* A4 image box constrained by height */}
+            {/* constrained A4 preview */}
             <div className="absolute inset-0 grid place-items-center p-4 sm:p-6">
               <motion.div
                 className="relative h-[80svh] max-h-[640px] max-w-[92vw] aspect-[210/297] overflow-hidden rounded-xl bg-white shadow-2xl"
